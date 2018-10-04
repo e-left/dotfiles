@@ -1,5 +1,4 @@
 Install git,gvim,vim,gdb from package manager
 Install node and npm,install radare
 Move dotfiles to home directory
-Install tor browser
 Download burp
