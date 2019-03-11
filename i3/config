@@ -185,3 +185,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+e mode "$mode_system"
+
+
+#Lock and sleep when closing lid
+exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh
