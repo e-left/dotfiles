@@ -2,3 +2,4 @@ Install git,gvim,vim,gdb from package manager
 Install node and npm,install radare
 Move dotfiles to home directory
 Download burp
+TODO - replace this with a start-script.sh
