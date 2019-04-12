@@ -49,9 +49,9 @@ set history=500
 set nocompatible
 filetype off
 
-let g:javascript_plugin_jsdoc = 1
-let g:javascript_plugin_ngdoc = 1
-let g:javascript_plugin_flow = 1
+"let g:javascript_plugin_jsdoc = 1
+"let g:javascript_plugin_ngdoc = 1
+"let g:javascript_plugin_flow = 1
 
 "set rtp+=~/.vim/bundle/Vundle.vim
 "call vundle#begin()
@@ -83,7 +83,7 @@ nmap <leader>w :w!<cr>
 " (useful for handling the permission-denied error)
 command W w !sudo tee % > /dev/null
 map <F7> mzgg=G`z
-
+map <F8> <Esc>={=}
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -170,12 +170,13 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-try
-    colorscheme desert
-catch
-endtry
+"try
+"    colorscheme desert
+"catch
+"endtry
 
 set background=dark
+colorscheme NeoSolarized
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -416,3 +417,26 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
+"Auto formatting stuff
+
+map <C-Tab> gt
+map <C-S-Tab> gT
+
+"let g:deoplete#enable_at_startup = 1
+
+"execute pathogen#infect()
+
+map <C-n> :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
+"call pathogen#helptags()
+
+"Install plugins here
+
+call plug#begin()
+
+Plug 'scrooloose/nerdtree'
+
+
+call plug#end()
