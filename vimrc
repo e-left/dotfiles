@@ -176,7 +176,12 @@ endif
 "endtry
 
 set background=dark
-colorscheme NeoSolarized
+colorscheme solarized
+"colorscheme gruvbox
+
+
+"Set up python version for powerline
+let g:powerline_pycmd="py3"
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -262,8 +267,8 @@ map <leader>h :bprevious<cr>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove<cr>
+map <leader>t<leader> :tabnext<cr> 
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
@@ -437,6 +442,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
-
+Plug 'micha/vim-colors-solarized'
+Plug 'morhetz/gruvbox'
+Plug 'zxqfl/tabnine-vim'
 
 call plug#end()
+
+
+"Autocomplete setup
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
