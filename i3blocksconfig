@@ -24,7 +24,8 @@
 #
 # The top properties below are applied to every block, but can be overridden.
 # Each block command defaults to the script name to avoid boilerplate.
-command=/usr/share/i3blocks/$BLOCK_NAME
+# Change $SCRIPT_DIR to the location of your scripts!
+command=/home/eleft/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
@@ -33,19 +34,27 @@ markup=none
 # The first parameter sets the step (and units to display)
 # The second parameter overrides the mixer selection
 # See the script for details.
-[volume]
-label=VOL
+
+#[volume]
 #label=♪
-instance=Master
-#instance=PCM
-interval=1
-signal=10
+#command=/home/eleft/.config/i3blocks/volume/volume
+#label=VOL
+#interval=5
+#signal=10
+#STEP=5%
+
+[docker]
+command=/home/eleft/.config/i3blocks/docker/docker
+color=#0db7ed
+interval=10
+LABEL=Docker 
 
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-label=MEM
+command=/home/eleft/.config/i3blocks/memory/memory
+label=MEM:
 separator=false
 interval=30
 
@@ -61,8 +70,9 @@ interval=30
 # The script may be called with a optional argument to set the alert
 # (defaults to 10 for 10%).
 [disk]
-label=HOME
-#instance=/mnt/data
+command=/home/eleft/.config/i3blocks/disk/disk
+label=HOME:
+#DIR=/mnt/data
 interval=30
 
 # Network interface monitoring
@@ -70,42 +80,65 @@ interval=30
 # If the instance is not specified, use the interface used for default route.
 # The address can be forced to IPv4 or IPv6 with -4 or -6 switches.
 [iface]
-#instance=wlan0
+#IFACE=wlan0
+command=/home/eleft/.config/i3blocks/iface/iface
 color=#00FF00
 interval=10
 separator=true
 
-#[wifi]
-#instance=wlp3s0
-#interval=10
-#separator=false
+[wifi]
+#INTERFACE=wlp3s0
+label=wifi:
+interval=10
+separator=false
 
-#[bandwidth]
-#instance=eth0
-#interval=5
+[bandwidth]
+#INTERFACE=eth0
+interval=5
 
 # CPU usage
 #
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
+command=/home/eleft/.config/i3blocks/cpu_usage/cpu_usage
 label=CPU
 interval=10
-min_width=CPU: 100.00%
+min_width=CPU 100.00%
 #separator=false
 
-#[load_average]
-#interval=10
+[load_average]
+label=LOAD
+interval=10
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
-[battery]
-label=BAT
+#[battery]
+#command=/home/eleft/.config/i3blocks/battery/battery
+#label=BAT
 #label=⚡
-#instance=1
-interval=30
+#interval=30
 
+[batterybar]
+command=/home/eleft/.config/i3blocks/batterybar/batterybar
+label=bat[
+interval=5
+markup=pango
+min_width=bat: ■■■■■
+# Discharging colors low to high
+C1=#FF0027
+C2=#FF3B05
+C3=#FFB923
+C4=#FFD000
+C5=#E4FF00
+C6=#ADFF00
+C7=#6DFF00
+C8=#10BA00
+CHARGING_COLOR=#00AFE3
+FULL_COLOR=#FFFFFF
+AC_COLOR=#535353
+#
 # Date Time
 #
 [time]
@@ -121,18 +154,10 @@ interval=5
 #interval=5
 #signal=10
 
-# Spotify icon \uF1BC
-#[spotify]
-#label=
-#command=~/.config/i3blocks/scripts/spotify.py
-#color=#81b71a
-#interval=5	
-
 # OpenVPN support
 #
 # Support multiple VPN, with colors.
 #[openvpn]
-#instance=tun0
 #interval=20
 
 # Temperature
@@ -151,11 +176,13 @@ interval=5
 # bindsym --release Caps_Lock exec pkill -SIGRTMIN+11 i3blocks
 # bindsym --release Num_Lock  exec pkill -SIGRTMIN+11 i3blocks
 #[keyindicator]
-#instance=CAPS
+#KEY=CAPS
+#markup=pango
 #interval=once
 #signal=11
 
 #[keyindicator]
-#instance=NUM
+#KEY=NUM
+#markup=pango
 #interval=once
 #signal=11

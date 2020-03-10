@@ -179,9 +179,11 @@ set background=dark
 colorscheme solarized
 "colorscheme gruvbox
 
+set clipboard=unnamedplus
+set mouse=a
 
 "Set up python version for powerline
-let g:powerline_pycmd="py3"
+"let g:powerline_pycmd="py3"
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -190,6 +192,9 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
+
+"Used to fix the :terminal
+set t_Co=16
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -444,7 +449,8 @@ call plug#begin()
 Plug 'scrooloose/nerdtree'
 Plug 'micha/vim-colors-solarized'
 Plug 'morhetz/gruvbox'
-Plug 'zxqfl/tabnine-vim'
+"Plug 'zxqfl/tabnine-vim'
+Plug 'ycm-core/YouCompleteMe'
 
 call plug#end()
 
@@ -453,3 +459,5 @@ call plug#end()
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+
+set completeopt-=preview
