@@ -176,6 +176,9 @@ endif
 "endtry
 
 set background=dark
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"let g:solarized_termcolors = 256
 colorscheme solarized
 "colorscheme gruvbox
 
@@ -191,6 +194,7 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
+    "colorscheme solarized
 endif
 
 "Used to fix the :terminal
@@ -432,15 +436,8 @@ endfunction
 map <C-Tab> gt
 map <C-S-Tab> gT
 
-"let g:deoplete#enable_at_startup = 1
-
-"execute pathogen#infect()
-
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
-"call pathogen#helptags()
 
 "Install plugins here
 
@@ -448,16 +445,25 @@ call plug#begin()
 
 Plug 'scrooloose/nerdtree'
 Plug 'micha/vim-colors-solarized'
-Plug 'morhetz/gruvbox'
+"Plug 'morhetz/gruvbox'
 "Plug 'zxqfl/tabnine-vim'
 Plug 'ycm-core/YouCompleteMe'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'natebosch/vim-lsc'
+Plug 'natebosch/vim-lsc-dart'
+Plug 'jiangmiao/auto-pairs'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 
 call plug#end()
 
+"Dart setup
+autocmd FileType dart setlocal shiftwidth=2 softtabstop=2 expandtab
 
 "Autocomplete setup
 
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+let g:ycm_filetype_blacklist = { 'dart' : 1 }
 
 set completeopt-=preview
