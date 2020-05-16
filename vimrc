@@ -45,22 +45,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=500
-"Vundle setup
 set nocompatible
 filetype off
-
-"let g:javascript_plugin_jsdoc = 1
-"let g:javascript_plugin_ngdoc = 1
-"let g:javascript_plugin_flow = 1
-
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
-
-"Plugin 'VundleVim/Vundle.vim'
-
-"Insert plugins here
-
-"call vundle#end()
 
 " Enable filetype plugins
 filetype plugin on
@@ -170,23 +156,10 @@ if $COLORTERM == 'gnome-terminal'
     set t_Co=256
 endif
 
-"try
-"    colorscheme desert
-"catch
-"endtry
-
 set background=dark
-"let g:solarized_visibility = "high"
-"let g:solarized_contrast = "high"
-"let g:solarized_termcolors = 256
-colorscheme solarized
-"colorscheme gruvbox
 
 set clipboard=unnamedplus
 set mouse=a
-
-"Set up python version for powerline
-"let g:powerline_pycmd="py3"
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -194,7 +167,6 @@ if has("gui_running")
     set guioptions-=e
     set t_Co=256
     set guitablabel=%M\ %t
-    "colorscheme solarized
 endif
 
 "Used to fix the :terminal
@@ -241,7 +213,7 @@ set wrap "Wrap lines
 """"""""""""""""""""""""""""""
 " => Visual mode related
 """"""""""""""""""""""""""""""
-" Visual mode pressing * or # searches for the current selection
+"Visual mode pressing * or # searches for the current selection
 " Super useful! From an idea by Michael Naumann
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
@@ -433,9 +405,6 @@ endfunction
 
 "Auto formatting stuff
 
-map <C-Tab> gt
-map <C-S-Tab> gT
-
 map <C-n> :NERDTreeToggle<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -444,9 +413,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 call plug#begin()
 
 Plug 'scrooloose/nerdtree'
-Plug 'micha/vim-colors-solarized'
-"Plug 'morhetz/gruvbox'
-"Plug 'zxqfl/tabnine-vim'
 Plug 'ycm-core/YouCompleteMe'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'natebosch/vim-lsc'
