@@ -399,22 +399,36 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 call plug#begin('/home/eleft/.config/nvim/plugged/')
 
-Plug 'scrooloose/nerdtree'
 "Plug 'dart-lang/dart-vim-plugin'
 "Plug 'natebosch/vim-lsc'
 "Plug 'natebosch/vim-lsc-dart'
 "Plug 'thosakwe/vim-flutter'
+Plug 'scrooloose/nerdtree'
 Plug 'jiangmiao/auto-pairs'
-"Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'dracula/vim', {'as': 'dracula'}
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'joshdick/onedark.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'itchyny/lightline.vim'
+Plug 'mattn/emmet-vim'
+
+
 
 call plug#end()
 
-colorscheme dracula
+
+let g:onedark_terminal_italics = 1
+let g:python3_host_prog = '/usr/bin/python3'
+
+colorscheme onedark
+"colorscheme dracula
 "Dart setup
 autocmd FileType dart setlocal shiftwidth=2 softtabstop=2 expandtab
 
@@ -427,6 +441,7 @@ let g:dart_style_guide = 2
 let g:dart_format_on_save = 1
 let g:lsc_auto_map = v:true
 
+let g:ycm_autoclose_preview_window_after_completion=1
 
 set completeopt-=preview
 let g:go_fmt_command = "goimports"
@@ -442,4 +457,15 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+noremap <M-/> :Commentary<cr>
 
+" vierualevn support for python
+" py3 << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"     project_base_dir = os.environ['VIRTUAL_ENV']
+"     activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"     with open(activate_this) as f:
+"         exec(f.read(), {'__file__': activate_this})
+" EOF
