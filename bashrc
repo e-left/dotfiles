@@ -116,4 +116,37 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export PATH=$PATH:/home/eleft/anaconda3/bin/
+# go
+export PATH=$PATH:/usr/local/go/bin
+
+# ros stuff
+alias asdriving="ros2 topic pub /state_machine_state turtle_interfaces/msg/StateMachineState \"{state: 3}\""
+alias rossource=". /home/eleft/utility_ros_scripts/ros_source.sh"
+alias rosinit=". /home/eleft/utility_ros_scripts/ros_init.sh"
+alias pj="ros2 run plotjuggler plotjuggler"
+alias pymonitor="ros2 run turtle_py_monitor py_monitor"
+alias rviz="ros2 run rviz2 rviz2"
+
+# ros testing stuff
+alias testkf_static="/home/eleft/utility_ros_scripts/test_state_estimation_static.sh"
+alias testkf_dynamic="/home/eleft/utility_ros_scripts/test_state_estimation_dynamic.sh"
+alias visualize_graphs="/home/eleft/utility_ros_scripts/visualize_graphs.sh"
+alias visualize_run="/home/eleft/utility_ros_scripts/visualize_run.sh"
+
+# ctf
+alias p2="/home/eleft/ctf/PwnBox2/p2"
+
+# ganache
+alias ganache="/home/eleft/ganache"
+
+# hardcore shit
+alias vim="nvim"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Created by `pipx` on 2022-01-04 14:17:24
+export PATH="$PATH:/home/eleft/.local/bin"
+. "$HOME/.cargo/env"
+
+# solana
+PATH="/home/eleft/.local/share/solana/install/active_release/bin:$PATH"
